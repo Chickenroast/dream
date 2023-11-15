@@ -13,6 +13,16 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.return {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
 /* Header styles */
 .header {
   padding: 15px;
@@ -68,7 +78,6 @@ footer {
   background-color: #0174be;
   color: white;
   text-align: center;
-  position: fixed;
   bottom: 0;
   width: 100%;
 }
