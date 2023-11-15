@@ -12,7 +12,7 @@
     <h1>Currency converter</h1>
 </header>
 
-<!-- ----------------------API----------------------- -->
+<!-- ----------------------API-OU T ES?---------------------------------------------------------------- -->
 <?php
 function makeApiRequest($url) {
     $curl = curl_init();
@@ -47,9 +47,12 @@ function makeApiRequest($url) {
 $currencies = makeApiRequest("https://currency-converter18.p.rapidapi.com/api/v1/supportedCurrencies");
 
 ?>
-
-<form class="form" method="get" id="currency-form">         
+<!-- ------------------------------------EL FORMULAIRE------------------------------------------------ -->
+<form class="form" method="get" id="currency-form">
+    <!-- ------------------------------------FORMGROUP------------------------------------------------ -->         
     <div class="form-group">
+
+    <!-- ------------------------------------FROM------------------------------------------------ -->
         <div class="from">
         <label>From</label>
         <select name="from_currency">
@@ -67,7 +70,7 @@ $currencies = makeApiRequest("https://currency-converter18.p.rapidapi.com/api/v1
         <label>Amount</label>
         <input type="text" placeholder="Currency" name="amount" id="amount" />
         </div>
-
+<!-- ------------------------------------TO------------------------------------------------ -->
         <div class="to">
         <label>To</label>
         <select name="to_currency">
@@ -83,30 +86,35 @@ $currencies = makeApiRequest("https://currency-converter18.p.rapidapi.com/api/v1
 
         <button type="submit" name="convert" id="convert">Convert</button>
     </div>
+
+<!-- ------------------------------------FONCTION------------------------------------------------ -->
     <?php
     if ($currencies !== false) {
     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["convert"])) {
+        
         $fromCurrency = $_GET["from_currency"];
         $toCurrency = $_GET["to_currency"];
+        $selectedToCurrencyCode = $_GET["to_currency"];
         $amount = $_GET["amount"];
 
         $conversionApiUrl = "https://currency-converter18.p.rapidapi.com/api/v1/convert?from=$fromCurrency&to=$toCurrency&amount=$amount";
 
         $conversionResult = makeApiRequest($conversionApiUrl);
-
+        // <!-- ------------------------------------RESULTAT------------------------------------------------ -->
         if ($conversionResult !== false) {
             $convertedAmount = number_format($conversionResult['result']['convertedAmount'], 2, '.', '');
-            echo "<p class='conversion-result'>Conversion Result: " . htmlspecialchars($currencyCode .' '. $convertedAmount, ENT_QUOTES, 'UTF-8') . "</p>";
+            echo "<p class='conversion-result'>Conversion Result: " . htmlspecialchars( $selectedToCurrencyCode .' '. $convertedAmount, ENT_QUOTES, 'UTF-8') . "</p>";
         } else {
             echo "<p class='conversion-result'>Error in conversion</p>";
         }
     }
 }
 ?>
+
 </form>
 
 <footer>
-    <!-- Your footer content goes here -->
+
 </footer>
 
 </body>
