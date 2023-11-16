@@ -1,16 +1,7 @@
-/* Reset some default styles */
-body,
-h1,
-p,
-select,
-input,
-button {
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  margin: 85px;
 }
 
 .return {
@@ -27,7 +18,7 @@ body {
 .header {
   padding: 15px;
   background-color: #0174be;
-  color: white;
+  color: black;
   text-align: center;
 }
 
