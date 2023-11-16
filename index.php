@@ -78,7 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["textToTranslate"]) && is
 ?>
 
 
+<div class="page">
 
+<div class="currency">
 <form action="index.php" method="get" class="from">
     <label for="textToTranslate">Texte à traduire:</label>
     <input type="text" id="textToTranslate" name="textToTranslate" required>
@@ -98,14 +100,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["textToTranslate"]) && is
     <?php if ($translatedText !== null): ?>
         <p class="return"><?php echo htmlspecialchars($translatedText); ?></p>
     <?php else: ?>
-        <p class="return">Translation not available</p>
+        <p class="return">Your Response</p>
     <?php endif; ?>
 </form>
-
+</div>
     <!-- Display the translation result if available -->
    
 
-<!-- ----------------------CURRENCY CONVERTER------------------------------------------------------------------------------------------- -->
+<!-- ----------------------CURRENCY------------------------------------------------------------------------------------------- -->
 <?php
 function makeApiRequest($url) {
     $curl = curl_init();
@@ -139,8 +141,12 @@ function makeApiRequest($url) {
 
 $currencies = makeApiRequest("https://currency-converter18.p.rapidapi.com/api/v1/supportedCurrencies");
 
+
 ?>
 <!-- ------------------------------------EL FORMULAIRE------------------------------------------------ -->
+<div class="currency">
+    
+
 <form class="form" method="get" id="currency-form">
     <!-- ------------------------------------FORMGROUP------------------------------------------------ -->         
     <div class="form-group">
@@ -162,7 +168,8 @@ $currencies = makeApiRequest("https://currency-converter18.p.rapidapi.com/api/v1
         <div class="amount">
         <label>Amount</label>
         <input type="text" placeholder="Currency" name="amount" id="amount" />
-        </div>
+        <button type="submit" name="convert" id="convert">Convert</button>    
+    </div>
 <!-- ------------------------------------TO------------------------------------------------ -->
         <div class="to">
         <label>To</label>
@@ -175,10 +182,8 @@ $currencies = makeApiRequest("https://currency-converter18.p.rapidapi.com/api/v1
             }
             ?>
         </select>
-        </div>
 
-        <button type="submit" name="convert" id="convert">Convert</button>
-    </div>
+        
 
 <!-- ------------------------------------FONCTION------------------------------------------------ -->
     <?php
@@ -205,10 +210,7 @@ $currencies = makeApiRequest("https://currency-converter18.p.rapidapi.com/api/v1
 ?>
 
 </form>
-
-<footer>
-
-</footer>
-
+<div>
+</div>
 </body>
 </html>
