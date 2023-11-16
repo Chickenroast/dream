@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+<!-- ----------------------HEADER------------------------------------------------ -->
     <header class="header">
         <h1>Currency converter</h1>
     </header>
@@ -28,7 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["textToTranslate"]) && is
     $targetLanguage = $_GET["targetLanguage"];
 
     // Call the translate function
-    function translate($from, $to, $text) {
+    function translate($to, $text) {
+
+        //pour les caracteres spéciaux
         $text = str_replace("'", "&#39;", $text);
 
         $curl = curl_init();
@@ -64,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["textToTranslate"]) && is
 
     $translationResult = translate("auto", $targetLanguage, $textToTranslate);
 
-    // Process translation result
+    // On traduit le input
     $translationData = json_decode($translationResult, true);
     if (isset($translationData['trans'])) {
         $translatedText = $translationData['trans'];
@@ -75,13 +77,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["textToTranslate"]) && is
 }
 ?>
 
+
+
 <form action="index.php" method="get" class="from">
     <label for="textToTranslate">Texte à traduire:</label>
     <input type="text" id="textToTranslate" name="textToTranslate" required>
     <br>
 
     <label for="targetLanguage">Langue cible:</label>
-    <select id="targetLanguage" name="targetLanguage" required>
+    <!-- ATTRIBUT NAME est le nom qui sera envoyé dans le serveur (!cms)/  ---------------------------------------------------------!-->
+    <select id="targetLanguage" name="targetLanguage" required> 
         <option value="fr">Français</option>
         <option value="es">Espagnol</option>
         <option value="de">Allemand</option>
@@ -100,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["textToTranslate"]) && is
     <!-- Display the translation result if available -->
    
 
-<!-- ----------------------API-OU T ES?---------------------------------------------------------------- -->
+<!-- ----------------------CURRENCY CONVERTER------------------------------------------------------------------------------------------- -->
 <?php
 function makeApiRequest($url) {
     $curl = curl_init();
