@@ -11,7 +11,7 @@
 <body>
 <!-- ----------------------HEADER------------------------------------------------ -->
     <header class="header">
-        <h1>TRAVEL HELP</h1>
+        <h1>TRAVEL HELPER</h1>
     </header>
 
     <!-- ----------------------TRANSLATION FORM------------------------------------------------ -->
@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["textToTranslate"]) && is
 <div class="page">
 
 <div class="currency">
-<h2 class="header">Translate</h2>
+<h2 class="titre">Translate</h2>
 <form action="index.php" method="get" class="from">
     <label for="textToTranslate">Your text here:</label>
     <input type="text" id="textToTranslate" name="textToTranslate" required>
@@ -147,7 +147,7 @@ $currencies = makeApiRequest("https://currency-converter18.p.rapidapi.com/api/v1
 <!-- ------------------------------------EL FORMULAIRE------------------------------------------------ -->
 <div class="currency">
     
-
+<h2 class="titre">Currency converter</h2>
 <form class="form" method="get" id="currency-form">
     <!-- ------------------------------------FORMGROUP------------------------------------------------ -->         
     <div class="form-group">
