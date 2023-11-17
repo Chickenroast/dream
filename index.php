@@ -11,7 +11,7 @@
 <body>
 <!-- ----------------------HEADER------------------------------------------------ -->
     <header class="header">
-        <h1>Currency converter</h1>
+        <h1>TRAVEL HELP</h1>
     </header>
 
     <!-- ----------------------TRANSLATION FORM------------------------------------------------ -->
@@ -81,12 +81,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["textToTranslate"]) && is
 <div class="page">
 
 <div class="currency">
+<h2 class="header">Translate</h2>
 <form action="index.php" method="get" class="from">
-    <label for="textToTranslate">Texte à traduire:</label>
+    <label for="textToTranslate">Your text here:</label>
     <input type="text" id="textToTranslate" name="textToTranslate" required>
     <br>
 
-    <label for="targetLanguage">Langue cible:</label>
+    <label for="targetLanguage">Translate to:</label>
     <!-- ATTRIBUT NAME est le nom qui sera envoyé dans le serveur (!cms)/  ---------------------------------------------------------!-->
     <select id="targetLanguage" name="targetLanguage" required> 
         <option value="fr">Français</option>
@@ -95,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["textToTranslate"]) && is
     </select>
     <br>
 
-    <button type="submit">Traduire</button>
+    <button type="submit">Translate</button>
     
     <?php if ($translatedText !== null): ?>
         <p class="return"><?php echo htmlspecialchars($translatedText); ?></p>
